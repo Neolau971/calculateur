@@ -1,10 +1,12 @@
 import React from 'react';
+import Button from './components/button/button'
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">Hello wolrd !</div>
-  );
-}
+    <div className="App">
+      <Button props1={"hello world !!"} props2={"I'm dicnie"}/>
+    </div>
+  )}
 
 export default App;

@@ -1,11 +1,13 @@
-
-//interface ButtonProps {
-//props1: string,
-//props2: string
-//}
-
 import React from "react"
 
-type ButtonProps = { props1: string }
+interface ButtonProps {
+props1: string,
+props2: string
+}
 
-export const Button = ({props1}:ButtonProps) => <div>{props1}</div>
+const Button: React.FC<ButtonProps> = ({props1, props2}) => {
+    return (
+        <div>{props1} {props2}</div>
+    )}
+
+export default Button
