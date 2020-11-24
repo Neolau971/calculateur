@@ -5,7 +5,7 @@ type FooterComponentProps = {
 }
 
 const FooterComponent: React.FC<FooterComponentProps> = () => {
-    return null
+  return null
 }
 
 export default FooterComponent

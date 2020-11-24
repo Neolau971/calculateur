@@ -5,7 +5,7 @@ type HeaderComponentProps = {
 }
 
 const HeaderComponent: React.FC<HeaderComponentProps> = () => {
-    return null
+  return null
 }
 
 export default HeaderComponent

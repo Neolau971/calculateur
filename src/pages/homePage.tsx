@@ -4,13 +4,13 @@ import HeaderComponent from '../components/header-component/headerComponent'
 import MenuComponent from '../components/menu-component/menuComponent'
 
 const HomePage: React.FC = () => {
-    return (
-        <>
-            <HeaderComponent />
-            <MenuComponent />
-            <FooterComponent />
-        </>
-    )
+  return (
+    <>
+      <HeaderComponent />
+      <MenuComponent />
+      <FooterComponent />
+    </>
+  )
 }
 
 export default HomePage

@@ -5,7 +5,7 @@ type MenuComponentProps = {
 }
 
 const MenuComponent: React.FC<MenuComponentProps> = () => {
-    return null
+  return null
 }
 
 export default MenuComponent
