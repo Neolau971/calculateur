@@ -1,12 +1,13 @@
 import React from 'react';
-import { Button } from 'antd';
 import './App.css';
+import HomePage from './pages/homePage';
 
 const App = () => {
   return (
     <div className="App">
-      <Button type="primary">Button</Button>
+      <HomePage />
     </div>
-  )}
+  )
+}
 
 export default App;
