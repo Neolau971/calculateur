@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Layout, Menu } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import ContentOneComponent from '../content-component/contentOneComponent';
+import ContentTwoComponent from '../content-component/contentTwoComponent';
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -10,6 +11,17 @@ type MenuComponentProps = {
 }
 
 const MenuComponent: React.FC<MenuComponentProps> = () => {
+
+  const [isContentOneComponent, setIsContentOneComponent] = useState(true)
+
+  const handleClickMenu = (e: any) => {
+    if (e.key !== "1") {
+      setIsContentOneComponent(false)
+    } else {
+      setIsContentOneComponent(true)
+    }
+  }
+
   return (
     <Layout>
       <Sider width={200} style={{ height: '100%' }} className="site-layout-background ">
@@ -18,6 +30,7 @@ const MenuComponent: React.FC<MenuComponentProps> = () => {
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
           style={{ height: '100%', borderRight: 0 }}
+          onClick={handleClickMenu}
         >
           <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
             <Menu.Item key="1">option1</Menu.Item>
@@ -39,7 +52,8 @@ const MenuComponent: React.FC<MenuComponentProps> = () => {
           </SubMenu>
         </Menu>
       </Sider>
-      <ContentOneComponent />
+      {isContentOneComponent && <ContentOneComponent />}
+      {!isContentOneComponent && <ContentTwoComponent />}
     </Layout>
   )
 }
