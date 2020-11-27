@@ -27,8 +27,6 @@ const MenuComponent: React.FC<MenuComponentProps> = () => {
       <Sider width={200} style={{ height: '100%' }} className="site-layout-background ">
         <Menu
           mode="inline"
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
           style={{ height: '100%', borderRight: 0 }}
           onClick={handleClickMenu}
         >

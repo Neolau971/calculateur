@@ -1,11 +1,13 @@
 import React from 'react'
 import { Layout } from 'antd';
 
-const { Content } = Layout;
+const { Content, Header } = Layout;
 
 const ContentOneComponent: React.FC = () => {
+
   return (
     <Layout style={{ padding: '0 24px 24px', marginTop: '10px' }}>
+      <Header style={{ backgroundColor: "aliceblue" }}>Here the Title</Header>
       <Content
         className="site-layout-background"
         style={{
