@@ -3,22 +3,41 @@ import { Layout, Menu } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import ContentOneComponent from '../content-component/contentOneComponent';
 import ContentTwoComponent from '../content-component/contentTwoComponent';
+import { getIMC } from '../../formules/medecineFormule'
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
-type MenuComponentProps = {
 
+let texte = {
+  Medecine: {
+    titre: "Medecine",
+    menu: { imc: "IMC" }
+  },
+  Impots: {
+    titre: "Impots",
+    menu: {
+      revenuNetGlo: "Revenu Net Global",
+      quotientFamilial: "Quotient Familial",
+      impotSurRevenu: "Impots Sur Revenu"
+    }
+  },
+  Autre: "Autre"
 }
 
-const MenuComponent: React.FC<MenuComponentProps> = () => {
+let titre = ""
+let formule: any
 
-  const [isContentOneComponent, setIsContentOneComponent] = useState(true)
+const MenuComponent: React.FC = () => {
+
+  const [isContentOneComponent, setIsContentOneComponent] = useState(false)
 
   const handleClickMenu = (e: any) => {
-    if (e.key !== "1") {
-      setIsContentOneComponent(false)
-    } else {
+    if (e.key === "IMC") {
       setIsContentOneComponent(true)
+      titre = "IMC"
+      formule = getIMC
+    } else {
+      setIsContentOneComponent(false)
     }
   }
 
@@ -30,27 +49,24 @@ const MenuComponent: React.FC<MenuComponentProps> = () => {
           style={{ height: '100%', borderRight: 0 }}
           onClick={handleClickMenu}
         >
-          <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
-            <Menu.Item key="1">option1</Menu.Item>
+          <SubMenu key={texte.Medecine.titre} icon={<UserOutlined />} title={texte.Medecine.titre}>
+            <Menu.Item key={texte.Medecine.menu.imc}>
+              {texte.Medecine.menu.imc}
+            </Menu.Item>
             <Menu.Item key="2">option2</Menu.Item>
-            <Menu.Item key="3">option3</Menu.Item>
-            <Menu.Item key="4">option4</Menu.Item>
           </SubMenu>
-          <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
-            <Menu.Item key="5">option5</Menu.Item>
-            <Menu.Item key="6">option6</Menu.Item>
-            <Menu.Item key="7">option7</Menu.Item>
-            <Menu.Item key="8">option8</Menu.Item>
+          <SubMenu key={texte.Impots.titre} icon={<LaptopOutlined />} title={texte.Impots.titre}>
+            <Menu.Item key="5">{texte.Impots.menu.revenuNetGlo}</Menu.Item>
+            <Menu.Item key="6">{texte.Impots.menu.quotientFamilial}</Menu.Item>
+            <Menu.Item key="7">{texte.Impots.menu.impotSurRevenu}</Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
             <Menu.Item key="9">option9</Menu.Item>
             <Menu.Item key="10">option10</Menu.Item>
-            <Menu.Item key="11">option11</Menu.Item>
-            <Menu.Item key="12">option12</Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>
-      {isContentOneComponent && <ContentOneComponent />}
+      {isContentOneComponent && <ContentOneComponent titre={titre} formule={formule} />}
       {!isContentOneComponent && <ContentTwoComponent />}
     </Layout>
   )
